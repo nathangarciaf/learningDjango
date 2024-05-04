@@ -21,7 +21,6 @@ class BookAdmin(admin.ModelAdmin):
     inlines = [BooksInstanceInline]
 
     def display_genre(self, obj):
-        """Create a string for the Genre. This is required to display genre in Admin."""
         genres = obj.genre.all()
         if len(genres) >= 3:
             return ', '.join([genre.name for genre in genres[:3]]) + '...'
@@ -36,9 +35,9 @@ class BookInstanceAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('book','imprint', 'id')
+            'fields': ('book', 'imprint', 'id')
         }),
         ('Availability', {
-            'fields': ('status', 'due_back','borrower')
+            'fields': ('status', 'due_back', 'borrower')
         }),
     )
