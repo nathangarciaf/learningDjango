@@ -7,7 +7,6 @@ from django.utils import timezone
 
 from .models import Choice, Question
 
-
 class IndexView(generic.ListView):
     template_name = "polls/index.html"
     context_object_name = "latest_question_list"
@@ -21,7 +20,6 @@ class IndexView(generic.ListView):
             :5
         ]
 
-
 class DetailView(generic.DetailView):
     model = Question
     template_name = "polls/detail.html"
@@ -30,7 +28,6 @@ class DetailView(generic.DetailView):
         Excludes any questions that aren't published yet.
         """
         return Question.objects.filter(pub_date__lte=timezone.now())
-
 
 class ResultsView(generic.DetailView):
     model = Question
